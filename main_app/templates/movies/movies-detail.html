@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>MOVIE DETAIL</h1>
+
+    <div class="card">
+        <div class="card-content">
+          <span class="card-title">{{ movie.name }}</span>
+          <p>Year: {{ movie.year }}</p>
+          <p>Description: {{ movie.description }}</p>
+
+          {% if movie.year > 2009 %}
+            <p>Year: {{ movie.year }}</p>
+          {% else %}
+            <p>Year: THE DARK YEARS</p>
+          {% endif %}
+        </div>
+      </div>
+
+{% endblock %}

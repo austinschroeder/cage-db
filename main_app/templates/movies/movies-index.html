@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>INDEX</h1>
+
+    {% for movie in movies %}
+
+    {% comment %} <a href="/cats/{{ cat.id }}"> {% endcomment %}
+    {% comment %} <a href="{% url 'detail' cat.id %}"> {% endcomment %}
+    <a href="/movies/{{ movie.id }}">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title">{{ movie.name }}</span>
+          <p>Year: {{ movie.year }}</p>
+          <p>Description: {{ movie.description }}</p>
+
+          {% if movie.year > 2009 %}
+            <p>Year: {{ movie.year }}</p>
+          {% else %}
+            <p>Year: THE DARK YEARS</p>
+          {% endif %}
+        </div>
+      </div>
+    </a>
+    {% comment %} </a> {% endcomment %}
+  {% endfor %}
+
+{% endblock %}
+
