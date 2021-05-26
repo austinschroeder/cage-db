@@ -13,7 +13,7 @@ class Movie (models.Model):
     image = models.ImageField(
         null=True, 
         blank=True, 
-        upload_to="/images/"
+        upload_to="images/"
     )
 
 
