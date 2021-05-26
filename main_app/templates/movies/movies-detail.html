@@ -6,6 +6,9 @@
 
     <div class="card">
         <div class="card-content">
+          {% if movie.image %}
+            <img src="{{ movie.image }}" alt="movie-image">
+          {% endif %}  
           <span class="card-title">{{ movie.name }}</span>
           <p>Year: {{ movie.year }}</p>
           <p>Description: {{ movie.description }}</p>
@@ -16,6 +19,11 @@
             <p>Year: THE DARK YEARS</p>
           {% endif %}
         </div>
-      </div>
+        <div class="card-action">
+            <a href="{% url 'delete_movie' movie.id %}">DELETE</a>
+            <a href="{% url 'update_movie' movie.id %}">Update</a>
+        </div>
+
+    </div>
 
 {% endblock %}

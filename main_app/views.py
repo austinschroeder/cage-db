@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Movie
+from .forms import MovieForm
 
 
 # Create your views here.
@@ -15,7 +16,7 @@ def gifs(request):
 
 def movies_index(request):
   #Retrieve all movies from DB
-  movies = Movie.objects.all() #[]
+  movies = Movie.objects.all().order_by('-year')
 
   context = { 'movies': movies }
   #Retrieve a template
@@ -30,3 +31,51 @@ def detail(request, movie_id):
   context = { 'movie': found_movie }
 
   return render(request, 'movies/movies-detail.html', context)
+
+#==CREATE==
+def create_movie(request):
+  if request.method == 'GET':
+  #Create a movie form
+    form = MovieForm()
+    #create context
+    context = {
+      'form': form
+    }
+  #Respond with new movie template and form
+    return render(request, 'movies/movies-new.html', context)
+  
+  else:
+    # Use MovieForm to get data from request
+    # MovieForm will also make sure the data matches Movie Model
+    form = MovieForm(request.POST)
+    if form.is_valid():
+      movie = form.save()
+      #Redirect to Movie detail template
+      return redirect('detail', movie.id)
+
+
+
+#==DELETE==
+def delete_movie(request, movie_id):
+  movie = Movie.objects.get(id=movie_id)
+  movie.delete()
+  return redirect('index')
+
+#==UPDATE==
+def update_movie(request, movie_id):
+  movie = Movie.objects.get(id=movie_id)
+
+  if request.method == 'GET':
+    #Send the MovieForm
+    form = MovieForm(instance=movie)
+    context = {
+      'form': form
+    }
+
+    return render(request, 'movies/movies-edit.html', context)
+  else:
+    # Handle update form
+    form = MovieForm(request.POST, instance=movie)
+    if form.is_valid():
+      movie = form.save()
+      return redirect('detail', movie.id)

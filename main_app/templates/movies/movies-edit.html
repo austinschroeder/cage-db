@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>EDIT MOVIE</h1>
+
+<form method="POST">
+    {% comment %} CSRF - Cross Site Request Forgery {% endcomment %}
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button class="btn" type="submit">Update Movie</button>
+</form>
+
+{% endblock %}
