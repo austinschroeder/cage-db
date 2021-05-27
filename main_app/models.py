@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
+
 class Movie (models.Model):
     name = models.CharField(max_length=50)
     year = models.IntegerField()
@@ -30,6 +30,13 @@ class Movie (models.Model):
                 this.image.delete()
         except: pass
         super(Movie, self).save(*args, **kwargs)
+
+class Review (models.Model):
+    user_review = models.TextField(
+        max_length=400,
+        null=True,
+        blank=True
+    )
 
 
 

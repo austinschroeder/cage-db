@@ -5,10 +5,9 @@
 
     {% if error_message %}
         <p class="red-text">{{ error_message }}</p>
-
     {% endif %}
 
-    <form methdo="POST">
+    <form method="POST">
     
         {% csrf_token %}
 

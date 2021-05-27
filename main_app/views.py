@@ -20,7 +20,8 @@ def gifs(request):
 @login_required
 def movies_index(request):
   #Retrieve all movies from DB
-  movies = Movie.objects.filter(user=request.user).order_by('-year')
+  # movies = Movie.objects.filter(user=request.user).order_by('-year')
+  movies = Movie.objects.order_by('-year')
 
   context = { 'movies': movies }
   #Retrieve a template
@@ -88,6 +89,7 @@ def update_movie(request, movie_id):
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #===SIGNUP===
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++
 def signup(request):
   error_message = ''
   if request.method == 'POST':
