@@ -4,7 +4,7 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  color:seashell
+  /* color:seashell */
 
 }
 
@@ -16,22 +16,25 @@ main {
   background-color: black;
 }
 
-.img-holder {
+/* .img-holder {
   width: 150px;
   height: 200px;
   position: relative;
   overflow: hidden;
-}
-.img-holder img {
-  position: absolute;
-  display: block;
-  top: 0;
-  left: 0;
+} */
+
+.gif {
+  /* width: auto; */
+  width: 200px;
+  /* height: auto; */
+  height: 150px;
+  margin: 15px;
+  border-radius: 5px;
 }
 
-/* #file-upload-button{
-  background: chartreuse;
-} */
+
+
+
 
 .gif-container {
   
