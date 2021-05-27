@@ -111,3 +111,5 @@ def signup(request):
   }
 
   return render(request, 'registration/signup.html', context)
+
+# testing

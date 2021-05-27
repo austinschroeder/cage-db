@@ -31,7 +31,7 @@ class Movie (models.Model):
         except: pass
         super(Movie, self).save(*args, **kwargs)
 
-class Review (models.Model):
+class UserFeedback (models.Model):
     user_review = models.TextField(
         max_length=400,
         null=True,
