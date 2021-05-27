@@ -16,12 +16,12 @@ main {
   background-color: black;
 }
 
-/* .img-holder {
+.img-holder {
   width: 150px;
   height: 200px;
   position: relative;
   overflow: hidden;
-} */
+}
 
 .gif {
   /* width: auto; */

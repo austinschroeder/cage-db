@@ -19,6 +19,14 @@ class Movie (models.Model):
         self.image.delete()
         super().delete(*args, **kwargs)
 
+    def save(self, *args, **kwargs):
+        try:
+            this = Movie.objects.get(id=self.id)
+            if this.image != self.image:
+                this.image.delete()
+        except: pass
+        super(Movie, self).save(*args, **kwargs)
+
 
 
 #We can use the Movie class to create a Form for
