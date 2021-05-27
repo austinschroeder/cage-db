@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Movie (models.Model):
@@ -15,6 +16,9 @@ class Movie (models.Model):
         blank=True, 
         upload_to="images/"
     )
+    #Foreign key will add '_id' to field name
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
     def delete(self, *args, **kwargs):
         self.image.delete()
         super().delete(*args, **kwargs)

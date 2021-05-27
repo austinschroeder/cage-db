@@ -10,6 +10,7 @@ urlpatterns = [
     path('movies/<int:movie_id>/', views.detail, name='detail'),
     path('movies/<int:movie_id>/delete/', views.delete_movie, name='delete_movie'),
     path('movies/<int:movie_id>/edit/', views.update_movie, name='update_movie'),
+    path('accounts/signup/', views.signup, name='signup'),
 ]
 
 # Steps to create a new page
