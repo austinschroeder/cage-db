@@ -4,7 +4,7 @@
 
 <h1>EDIT MOVIE</h1>
 
-<form method="POST">
+<form method="POST" enctype="multipart/form-data">
     {% comment %} CSRF - Cross Site Request Forgery {% endcomment %}
     {% csrf_token %}
     {{ form.as_p }}

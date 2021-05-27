@@ -1,8 +1,10 @@
   
 body {
+  /* background-image: url(https://cdn6.dissolve.com/p/D2115_195_954/D2115_195_954_1200.jpg); */
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  color:seashell
 
 }
 
@@ -14,6 +16,41 @@ main {
   background-color: black;
 }
 
+.img-holder {
+  width: 150px;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+.img-holder img {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+}
+
+/* #file-upload-button{
+  background: chartreuse;
+} */
+
+.gif-container {
+  
+}
+
+
+
+
+button.btn {
+  background-color: black;
+  border-radius: 10px;
+}
+
+button.btn:hover {
+  background-color: rebeccapurple;
+  border-radius: 10px;
+}
+
+
 footer {
   padding-top: 0;
   text-align: right;
@@ -22,3 +59,4 @@ footer {
 .new-footer {
   background-color: black;
 }
+

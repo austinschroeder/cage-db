@@ -47,7 +47,7 @@ def create_movie(request):
   else:
     # Use MovieForm to get data from request
     # MovieForm will also make sure the data matches Movie Model
-    form = MovieForm(request.POST)
+    form = MovieForm(request.POST, request.FILES)
     if form.is_valid():
       movie = form.save()
       #Redirect to Movie detail template
@@ -75,7 +75,7 @@ def update_movie(request, movie_id):
     return render(request, 'movies/movies-edit.html', context)
   else:
     # Handle update form
-    form = MovieForm(request.POST, instance=movie)
+    form = MovieForm(request.POST, request.FILES, instance=movie)
     if form.is_valid():
       movie = form.save()
       return redirect('detail', movie.id)

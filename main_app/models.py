@@ -15,6 +15,9 @@ class Movie (models.Model):
         blank=True, 
         upload_to="images/"
     )
+    def delete(self, *args, **kwargs):
+        self.image.delete()
+        super().delete(*args, **kwargs)
 
 
 
