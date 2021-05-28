@@ -37,7 +37,7 @@ class UserFeedback (models.Model):
         null=True,
         blank=True
     )
-
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
 
 
 #We can use the Movie class to create a Form for
