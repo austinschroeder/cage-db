@@ -38,6 +38,8 @@ class UserFeedback (models.Model):
         blank=True
     )
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    def __str__(self):
+        return f'{self.user_review}'
 
 
 #We can use the Movie class to create a Form for

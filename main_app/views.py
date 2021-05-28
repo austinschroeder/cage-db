@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Movie
-from .forms import MovieForm
+from .forms import MovieForm, UserFeedbackForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
@@ -15,6 +15,16 @@ def about(request):
 
 def gifs(request):
   return render(request, 'gifs.html')
+
+def add_review(request, movie_id):
+  form = UserFeedbackForm(request.POST)
+  if form.is_valid():
+    new_review=form.save(commit=False)
+    new_review.movie_id = movie_id
+    new_review.save()
+    return redirect('detail', movie_id)
+
+
 
 #+=+=+ INDEX +=+=+
 @login_required
@@ -31,11 +41,17 @@ def movies_index(request):
 def detail(request, movie_id):
   #get the movie data for a certain movie by its ID
   found_movie = Movie.objects.get(id=movie_id)
+  print(found_movie.userfeedback_set.all())
 
+  user_review = UserFeedbackForm()
   
-  context = { 'movie': found_movie }
+  context = { 'movie': found_movie,
+              'form': user_review,
+
+  }
 
   return render(request, 'movies/movies-detail.html', context)
+
 
 #==CREATE==
 def create_movie(request):
