@@ -2,10 +2,12 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Movie
 from .forms import MovieForm, UserFeedbackForm
+# from .forms import PhotoForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
-from .models import Movie, Photo, UserFeedback 
+from .models import Movie, UserFeedback 
+# from .models import Photo
 import uuid
 import boto3
 
@@ -44,6 +46,9 @@ def movies_index(request):
   #Combine the data with the template and send HTML back to browser
   return render(request, 'movies/movies-index.html', context)
 
+#=============================================================
+
+
 def detail(request, movie_id):
   #get the movie data for a certain movie by its ID
   found_movie = Movie.objects.get(id=movie_id)
@@ -66,7 +71,7 @@ def create_movie(request):
     form = MovieForm()
     #create context
     context = {
-      'form': form
+      'form': form,
     }
   #Respond with new movie template and form
     return render(request, 'movies/movies-new.html', context)
@@ -75,10 +80,13 @@ def create_movie(request):
     # Use MovieForm to get data from request
     # MovieForm will also make sure the data matches Movie Model
     form = MovieForm(request.POST, request.FILES)
+    photo_form = PhotoForm()
+    print(photo_form)
     if form.is_valid():
       movie = form.save(commit=False)
       movie.user = request.user
       movie.save()
+
       #Redirect to Movie detail template
       return redirect('detail', movie.id)
 
@@ -135,22 +143,22 @@ def signup(request):
   return render(request, 'registration/signup.html', context)
 
 #=============================================================
-# ADD PHOTO WTH S3
-def add_photo(request, movie_id):
-    # photo-file will be the "name" attribute on the <input type="file">
-    photo_file = request.FILES.get('photo-file', None)
-    if photo_file:
-        s3 = boto3.client('s3')
-        # need a unique "key" for S3 / needs image file extension too
-        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
-        # just in case something goes wrong
-        try:
-            s3.upload_fileobj(photo_file, BUCKET, key)
-            # build the full url string
-            url = f"{S3_BASE_URL}{BUCKET}/{key}"
-            # we can assign to cat_id or cat (if you have a cat object)
-            photo = Photo(url=url, movie_id=movie_id)
-            photo.save()
-        except:
-            print('An error occurred uploading file to S3')
-    return redirect('detail', movie_id=movie_id)
+# ADD PHOTO WTH S3 **TO BE ADDED LATER ON**
+# def add_photo(request, movie_id):
+#     # photo-file will be the "name" attribute on the <input type="file">
+#     photo_file = request.FILES.get('photo-file', None)
+#     if photo_file:
+#         s3 = boto3.client('s3')
+#         # need a unique "key" for S3 / needs image file extension too
+#         key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+#         # just in case something goes wrong
+#         try:
+#             s3.upload_fileobj(photo_file, BUCKET, key)
+#             # build the full url string
+#             url = f"{S3_BASE_URL}{BUCKET}/{key}"
+#             # we can assign to cat_id or cat (if you have a cat object)
+#             photo = Photo(url=url, movie_id=movie_id)
+#             photo.save()
+#         except:
+#             print('An error occurred uploading file to S3')
+#     return redirect('detail', movie_id=movie_id)

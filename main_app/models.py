@@ -16,6 +16,7 @@ class Movie (models.Model):
         blank=True, 
         upload_to="images/"
     )
+
     #Foreign key will add '_id' to field name
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
@@ -32,13 +33,13 @@ class Movie (models.Model):
         super(Movie, self).save(*args, **kwargs)
 
 #+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+
+# S3 TO BE ADDED LATER
+# class Photo(models.Model):
+#     url = models.CharField(max_length=200)
+#     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
 
-class Photo(models.Model):
-    url = models.CharField(max_length=200)
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f"Photo for movie_id: {self.movie_id} @{self.url}"
+#     def __str__(self):
+#         return f"Photo for movie_id: {self.movie_id} @{self.url}"
 
 
 
@@ -55,7 +56,7 @@ class UserFeedback (models.Model):
         return f'{self.user_review}'
 
 
-#We can use the Movie class to create a Form for
+#Can use the Movie class to create a Form for
 #^^^^CharField - <input type="text"/>^^^^
 
 #^^^^TextField - <textarea></textarea>^^^^
