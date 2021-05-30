@@ -97,6 +97,10 @@ button.btn:hover {
   border-radius: 10px;
 }
 
+.order-container {
+  background-color: coral;
+}
+
 
 footer {
   padding-top: 0;

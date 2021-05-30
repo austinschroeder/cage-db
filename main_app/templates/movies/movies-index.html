@@ -3,6 +3,16 @@
 {% block content %}
 
     <h1>All Movies</h1>
+    
+    <form class="order-container" method="POST" action="{% url 'index' %}">
+      {% csrf_token %}
+      <input id="orderBy" name="orderBy" type="hidden" value="name">
+      <button class="order-button"type="submit">Order by Name</button>
+    </form>
+    <form class="order-container"method="GET" action="{% url 'index' %}">
+      <button class="order-button" type="submit">Order by Year</button>
+    </form>
+
 
     {% for movie in movies %}
 

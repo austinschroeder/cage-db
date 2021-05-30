@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Movie
 from .forms import MovieForm, UserFeedbackForm
 # from .forms import PhotoForm
 from django.contrib.auth.forms import UserCreationForm
@@ -37,9 +36,12 @@ def add_review(request, movie_id):
 #+=+=+ INDEX +=+=+
 @login_required
 def movies_index(request):
-  #Retrieve all movies from DB
   # movies = Movie.objects.filter(user=request.user).order_by('-year')
-  movies = Movie.objects.order_by('-year')
+  # movies = Movie.objects.order_by('-year')
+  if request.method == 'POST':
+    movies = Movie.objects.order_by(request.POST.get("orderBy"))
+  else:
+    movies = Movie.objects.order_by('-year')
 
   context = { 'movies': movies }
   #Retrieve a template

@@ -5,7 +5,9 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('about/', views.about, name='about'),
     path('gifs/', views.gifs, name='gifs'),
+    #== INDEX URLs ==
     path('movies/', views.movies_index, name='index'),
+    #================
     path('movies/new/', views.create_movie, name='create_movie'),
     path('accounts/signup/', views.signup, name='signup'),
     path('movies/<int:movie_id>/', views.detail, name='detail'),
