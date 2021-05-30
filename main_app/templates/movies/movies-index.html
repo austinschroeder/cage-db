@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    <h1>INDEX</h1>
+    <h1>All Movies</h1>
 
     {% for movie in movies %}
 
@@ -16,10 +16,10 @@
               <img src="{{ movie.image.url }}" alt="movie-image">
             </div>
           {% endif %}  
-          <span class="card-title">{{ movie.name }}</span>
-          <p>Year: {{ movie.year }}</p>
-          <p>Genre: {{ movie.genre }}</p>
-          <p>Description: {{ movie.description }}</p>
+          <span class="card-title index-text">{{ movie.name }}</span>
+          <p class="index-text underline">Year: {{ movie.year }}</p>
+          <p class="index-text underline">Genre: {{ movie.genre }}</p>
+          <p class="index-text bold">Description:</p><p> {{ movie.description }}</p>
 
           {% comment %} {% if movie.year > 2009 %}
             <p>Year: {{ movie.year }}</p>

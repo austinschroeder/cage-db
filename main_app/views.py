@@ -80,8 +80,8 @@ def create_movie(request):
     # Use MovieForm to get data from request
     # MovieForm will also make sure the data matches Movie Model
     form = MovieForm(request.POST, request.FILES)
-    photo_form = PhotoForm()
-    print(photo_form)
+    # photo_form = PhotoForm()
+    # print(photo_form)
     if form.is_valid():
       movie = form.save(commit=False)
       movie.user = request.user

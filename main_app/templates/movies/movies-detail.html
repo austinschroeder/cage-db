@@ -4,17 +4,17 @@
 
     <h1>MOVIE DETAIL</h1>
 
-    <div class="card">
-        <div class="card-content">
+    <div class="card ">
+        <div class="card-content detail-card">
           {% if movie.image %}
             <div class="img-holder">
               <img src="{{ movie.image.url }}" alt="movie-image">
             </div>
           {% endif %}  
           <span class="card-title">{{ movie.name }}</span>
-          <p>Year: {{ movie.year }}</p>
-          <p>Genre: {{ movie.genre }}</p>
-          <p>Description: {{ movie.description }}</p>
+          <p class="underline">Year: {{ movie.year }}</p>
+          <p class="underline">Genre: {{ movie.genre }}</p>
+          <p class="bold">Description:</p><p> {{ movie.description }}</p>
 
          
         </div>
@@ -27,7 +27,7 @@
     <tbody>
       {% for review in movie.userfeedback_set.all %}
         <tr>
-          <p>{{review.user_review}}</p>
+          <p>-{{review.user_review}}</p>
           {% comment %} <td><a class="btn red" href="{% url 'delete_review' movie.id review.id %}">Delete</a></td> {% endcomment %}
         </tr>
       {% endfor %}

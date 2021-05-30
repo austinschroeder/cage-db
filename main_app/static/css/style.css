@@ -1,6 +1,10 @@
   
 body {
   /* background-image: url(https://cdn6.dissolve.com/p/D2115_195_954/D2115_195_954_1200.jpg); */
+  /* background-image: url(https://www.pngitem.com/pimgs/m/625-6251290_nic-cage-face-png-nicolas-cage-high-resolution.png);
+  background-repeat: no-repeat;
+  background-position: center; */
+  background-color: #F7F7F7;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -8,12 +12,26 @@ body {
 
 }
 
+
+
 main {
   flex: 1 0 auto;
 }
 
+h1 {
+  font-family: 'Orbitron', sans-serif;
+}
+
+p {
+  color: black;
+}
+
 .new-nav {
-  background-color: black;
+  background-color: rgb(25, 0, 53);
+}
+
+.left.brand-logo {
+  font-family: 'Orbitron', sans-serif;
 }
 
 .img-holder {
@@ -32,19 +50,45 @@ main {
   border-radius: 5px;
 }
 
-
-
-
-
-.gif-container {
-  
+.card .card-content:hover {
+  border: 1px solid rgb(25, 0, 53);
 }
 
+.card-content.detail-card:hover {
+  border: 0px;
+  /* background-color: chartreuse; */
+}
 
+.index-text {
+  color: black;
+}
 
+.bold {
+  font-weight: 900;
+}
+
+.underline{
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.card .card-title {
+  font-size: 26px;
+  font-weight: 400;
+}
+
+/* delete update buttons */
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
+  color: rebeccapurple;
+}
+
+/* delete update container */
+.card .card-action {
+  padding: 5px 24px;
+}
 
 button.btn {
-  background-color: black;
+  background-color: rgb(25, 0, 53);
   border-radius: 10px;
 }
 
@@ -57,9 +101,17 @@ button.btn:hover {
 footer {
   padding-top: 0;
   text-align: right;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }
 
 .new-footer {
-  background-color: black;
+  background-color: rgb(25, 0, 53);
+}
+
+.about-container {
+  display: flex;
 }
 
