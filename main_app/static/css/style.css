@@ -34,6 +34,7 @@ p {
   font-family: 'Orbitron', sans-serif;
 }
 
+
 .img-holder {
   width: 150px;
   height: 200px;
@@ -98,7 +99,21 @@ button.btn:hover {
 }
 
 .order-container {
-  background-color: coral;
+  display: inline-block;
+}
+
+.order-button {
+  border: none;
+  background-color: #F7F7F7;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+  text-decoration: underline;
+
+}
+
+.order-button:hover {
+  background-color: #F7F7F7;
+  border:rgb(25, 0, 53) 2px solid;
+  border-radius: 10px;
 }
 
 
@@ -113,6 +128,7 @@ footer {
 
 .new-footer {
   background-color: rgb(25, 0, 53);
+  margin-top: 20px;
 }
 
 .about-container {
