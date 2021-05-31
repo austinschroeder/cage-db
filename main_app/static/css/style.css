@@ -35,11 +35,18 @@ p {
 }
 
 
-.img-holder {
-  width: 150px;
+/* .img-holder {
+  border: 1px red solid;
   height: 200px;
-  position: relative;
+  width: 150px;
   overflow: hidden;
+  
+} */
+
+.index-image {
+  object-fit: contain;
+  height: 200px;
+  width: 150px;
 }
 
 .gif {
